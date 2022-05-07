@@ -9,20 +9,25 @@ class User:
 
     def display_info(self):
         print(self.first_name, self.last_name, self.email, self.age, sep="\n")
+        return self
     
     def enroll(self):
         if self.is_rewards_member == False:
             self.is_rewards_member = True
             self.gold_card_points = self.gold_card_points + 200
+            return self
         else:
             print(f'{self.first_name} is already a user')
+            return self
 
     def spend_points(self, points):
         if points <= self.gold_card_points:
             self.gold_card_points -= points
             print(f'{self.first_name}s current point balance is {self.gold_card_points}')
+            return self
         else:
             print("You dont have enough points for that")
+            return self
 
 
 
@@ -33,12 +38,10 @@ cheebo = User("Cheebo", "Beebo", "cheebohatesbadcode@gmail.com", 1)
 
 print (tony.first_name)
 print (tony.age)
-tony.display_info()
-tony.enroll()
+tony.display_info().enroll()
 print(tony.is_rewards_member, tony.gold_card_points, sep="\n")
 tony.spend_points(50)
-ben.enroll()
-ben.spend_points(80)
+ben.enroll().spend_points(80)
 tony.display_info()
 ben.display_info()
 cheebo.display_info()
